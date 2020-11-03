@@ -1,0 +1,20 @@
+<div class="row mt-2 mb-2">
+
+	<form #f="ngForm" class="col-12" (ngSubmit)="sendForm(f)">
+		<h5>Register new user</h5>
+
+		<div class="col-sm-12">
+			<legend>Email</legend>
+			<input type="email" class="form-control" name="email" ngModel required />
+		</div>
+
+		<div class="col-sm-12">
+			<legend>Password</legend>
+			<input type="password"  class="form-control" name="password" ngModel required />
+		</div>
+
+		<div class="col-sm-12">
+			<button type="submit" class="btn btn-success">Register</button>
+		</div>
+	</form>
+</div>

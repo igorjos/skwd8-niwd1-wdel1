@@ -1,0 +1,49 @@
+<div class="row">
+	<form #f="ngForm" class="col-12" (ngSubmit)="updateProfile(f)">
+		<h5>Update user profile</h5>
+
+		<!-- email, name, phone, street, city, country, zipcode -->
+		<div class="col-12">
+			<label>Email</label>
+			<input type="email" class="form-control" [ngModel]="userData.email" name="email" required />
+		</div>
+
+		<div class="col-12">
+			<label>Your Name</label>
+			<input type="text" class="form-control" [ngModel]="userData.fullname" name="fullname" required />
+		</div>
+
+		<div class="col-12">
+			<label>Phone</label>
+			<input type="tel" class="form-control" [ngModel]="userData.phone" name="phone" required />
+		</div>
+
+		<div class="col-12">
+			<label>Street</label>
+			<input type="text" class="form-control" [ngModel]="userData.street" name="street" />
+		</div>
+
+		<div class="col-12">
+			<label>City</label>
+			<input type="text" class="form-control" [ngModel]="userData.city" name="city" />
+		</div>
+
+		<div class="col-12">
+			<label>ZipCode</label>
+			<input type="text" class="form-control" [ngModel]="userData.zipcode" name="zipcode" />
+		</div>
+
+		<div class="col-12">
+			<label>Country</label>
+			<select [ngModel]="userData.country" class="form-control" name="country">
+				<option value="undefined">Not specified</option>
+				<option value="USA">USA</option>
+				<option value="Macedonia">Macedonia</option>
+			</select>
+		</div>
+
+		<div class="col-12">
+			<button class="btn btn-success">Update</button>
+		</div>
+	</form>
+</div>

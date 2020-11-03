@@ -1,0 +1,29 @@
+<div class="col-12">
+	<ul class="nav nav-tabs">
+		<li class="nav-item" *ngFor="let tab of tabs" (click)="switchTab(tab)">
+		  <a class="nav-link" [ngClass]="{'active': tab === activeTab}">{{tab}}</a>
+		</li>
+	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item" *ngIf="activeTab === tabs[0]">
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor="let role of allRoles">{{role.name}}</li>
+			</ul>
+			<div class="row">
+				<form #f="ngForm" (ngSubmit)="addNewRole(f)" class="col-12">
+					<div class="col-12 mt-2">
+						<legend>Role name</legend>
+						<input type="text" name="name" ngModel minlength="2" required />
+					</div>
+					<div class="col-12 mt-2">
+						<button type="submit" class="btn btn-success">Add</button>
+					</div>
+				</form>
+			</div>
+		</li>
+		<li class="list-group-item" *ngIf="activeTab === tabs[1]">
+			Lista so useri i rolji
+		</li>
+	</ul>
+</div>

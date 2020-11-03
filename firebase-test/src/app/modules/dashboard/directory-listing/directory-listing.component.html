@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-12 mb-2">
+		<h4>Create folder</h4>
+		<form #f="ngForm" (ngSubmit)="createNewFolder(f)">
+			<div class="col-12">
+				<div class="badge badge-info">Current dir: {{currentDir}}</div>
+				<div>
+					<label>Folder name</label>
+					<input type="text" name="dirname" ngModel class="form-control" required minlength="1" />
+				</div>
+			</div>
+			<div class="col-12 mt-1">
+				<button type="submit" class="btn btn-success">Save</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-12 mt-2">
+		<h4>Existigin files and folders</h4>
+		<ul class="list-group">
+			<li class="list-group-item" *ngFor="let item of items" (click)="changePath(item)">{{item}}</li>
+		</ul>
+	</div>
+	<div class="col-12 mt-2" *ngIf="fileContent">
+		<img [src]="fileContent" width="200" height="200" />
+	</div>
+</div>
