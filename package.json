@@ -2,8 +2,9 @@
 	"name": "firebase-test",
 	"version": "0.0.1",
 	"scripts": {
-		"start": "ENVIRONMENT=prod node server.js",
+		"start": "node server.js",
 		"start-dev": "ENVIRONMENT=dev node server.js",
+		"start-prod": "ENVIRONMENT=prod node server.js",
 		"start-stage": "ENVIRONMENT=prod PORT=8081 node server.js",
 		"dev-build": "cd firebase-test && ng build && cd ../ && npm run start-dev",
 		"stage-build": "cd firebase-test && ng build --configuration=stage && cd ../ && npm run start-stage",
