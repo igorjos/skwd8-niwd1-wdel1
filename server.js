@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 app.use('/api', router);
 
 
-router.all('/*', function(req, res, next) {
+app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('static/index.html', { root: __dirname });
 });
