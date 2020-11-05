@@ -1,5 +1,3 @@
-const fbconfig = require('../configs/firebase-config')
-
 class FilesController
 {
 	constructor(){}
@@ -12,7 +10,7 @@ class FilesController
 			const content = [];
 
 			const [files] = await process.firebaseStorage
-			.bucket(fbconfig.storageBucket)
+			.bucket(process.env.storageBucket)
 			.getFiles({prefix: `${process.env.mainDir}/${dirName}`, delimeter:  '/'}) //dev/test
 			.catch((error) => {
 				console.log(error);
@@ -63,13 +61,13 @@ class FilesController
 	{
 		return new Promise((s, f) => {
 			process.firebaseStorage
-			.bucket(fbconfig.storageBucket)
+			.bucket(process.env.storageBucket)
 			.file([process.env.mainDir, filePath].join("/"))
 			.makePublic()
 			.then(() => {
 
 				process.firebaseStorage
-				.bucket(fbconfig.storageBucket)
+				.bucket(process.env.storageBucket)
 				.file([process.env.mainDir, filePath].join("/"))
 				.getMetadata()
 				.then((metadata) => {

@@ -1,5 +1,6 @@
+const setup = require('./setup');
 const express = require('express');
-const app = express(); //Server 1
+const app = express(); //Server 1 
 const router = require('./consts/router.const');
 const cors = require('./consts/cors.const');
 const bodyParser = require('body-parser');
@@ -13,9 +14,6 @@ setParams(process.env.ENVIRONMENT);
 
 //Init process (global) based firebase connection
 const fbClient = require('./consts/firebase.const'); //read/write
-
-//Init process (global) based admin firebase connection
-const fbAdmin = require('./consts/firebase.admin.const'); //administrative read/write/modify etc.
 
 //Create default nodejs session
 const session = require('./consts/server.session.const');
@@ -44,7 +42,7 @@ app.use((req, res, next) => {
 app.use('/api', router);
 
 
-router.all('/*', function(req, res, next) {
+app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('static/index.html', { root: __dirname });
 });
