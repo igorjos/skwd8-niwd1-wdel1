@@ -41,6 +41,10 @@ build/Release
 node_modules/
 jspm_packages/
 
+#Custom
+configs/
+static/
+
 # TypeScript v1 declaration files
 typings/
 
@@ -103,7 +107,4 @@ dist
 # TernJS port file
 .tern-port
 
-#Custom
-configs/firebase-config.js
-configs/wd-elective-1-8290c3a1df4d.json
-static/
+firebase.json
