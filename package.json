@@ -3,21 +3,25 @@
 	"version": "0.0.1",
 	"scripts": {
 		"start": "node server.js",
-		"start-dev": "ENVIRONMENT=dev node server.js",
-		"start-prod": "ENVIRONMENT=prod node server.js",
-		"start-stage": "ENVIRONMENT=prod PORT=8081 node server.js",
+		"start-dev": "TESTSETUP=dev ENVIRONMENT=dev node server.js",
+		"start-prod": "TESTSETUP=dev ENVIRONMENT=prod node server.js",
+		"start-stage": "TESTSETUP=dev ENVIRONMENT=prod PORT=8081 node server.js",
 		"dev-build": "cd firebase-test && ng build && cd ../ && npm run start-dev",
 		"stage-build": "cd firebase-test && ng build --configuration=stage && cd ../ && npm run start-stage",
-		"prod-build": "cd firebase-test && ng build --configuration=production && cd ../ && npm run start"
+		"prod-build": "cd firebase-test && ng build --configuration=production && cd ../ && npm run start",
+		"test-dir": "ls && dir"
 	},
 	"dependencies": {
 		"@google-cloud/storage": "^5.4.0",
-		"body-parser": "^1.19.0",	
+		"body-parser": "^1.19.0",
 		"express": "^4.17.1",
 		"express-session": "^1.17.1",
 		"firebase": "^7.24.0",
 		"firebase-admin": "^9.2.0",
 		"nodemon": "^2.0.6",
 		"uuid": "^8.3.1"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.2"
 	}
 }
