@@ -17,7 +17,7 @@ const conf = {
 	type, 
 	project_id, 
 	private_key_id, 
-	private_key, 
+	private_key: private_key.replace(/\\n/g, '\n'), 
 	client_email, 
 	client_id, 
 	auth_uri, 
