@@ -3,6 +3,9 @@ const fs = require('fs');
 const addToEnvironment = (json) => {
 	for(let x in json)
 	{
+		if(x === "private_key")
+		process.env[x] = json[x].replace(/\\n/g, '\n')
+
 		process.env[x] = json[x];
 	}
 }
