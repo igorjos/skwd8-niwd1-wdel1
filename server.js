@@ -7,6 +7,56 @@ const bodyParser = require('body-parser');
 const storage = require('./consts/storage.const');
 const path = require('path');
 const setParams = require('./consts/environment.const');
+const helmet = require('helmet')
+
+//Security 
+//app.use(helmet());
+
+app.use(
+	helmet.contentSecurityPolicy({
+	  directives: {
+			defaultSrc: ["'self'", "'unsafe-inline'"],
+			scriptSrc: ["'self'", "example.com"],
+			objectSrc: ["'none'"],
+			upgradeInsecureRequests: [],
+		},
+	})
+ );
+
+app.use(helmet.hidePoweredBy());
+
+app.use(
+	helmet.referrerPolicy({
+	  policy: "no-referrer",
+	})
+);
+
+app.use(
+	helmet.hsts({
+  		maxAge: 0,
+	})
+);
+
+app.use(helmet.ieNoOpen());
+
+//This to work nocache lib should be installed from NPM
+// app.use(helmet.nocache());
+//const noCache = require('nocache')
+// ...
+//app.use(noCache())
+
+
+app.use(helmet.noSniff());
+
+app.use(
+	helmet({
+		frameguard: {
+		action: "deny",
+		},
+	})
+);
+
+app.use(helmet.xssFilter());
 
 setParams(process.env.ENVIRONMENT);
 
@@ -48,6 +98,8 @@ app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('static/index.html', { root: __dirname });
 });
+
+
 
 app.listen(PORT, HOST, () => {
 	console.log(`Server is running on ${HOST}:${PORT}`);

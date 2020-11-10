@@ -6,7 +6,7 @@ module.exports = session({
 	resave: true,
 	saveUninitialized: true,
 	name: 'FirebaseTEst',
-	cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 5},
+	cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 5, sameSite: 'lax'},
 	genid: () => {
 		return uuidv4();
 	}
